@@ -29,7 +29,7 @@ html {
 }
 
 .about-section {
-  padding: 50px;
+ 
   text-align: center;
   background-color: #FDAC53;
   color: white;
@@ -76,9 +76,9 @@ html {
 <body>
 
 <div class="about-section">
-  <h1>About Us Page</h1>
-  <p>Some text about who we are and what we do.</p>
-  <p>Resize the browser window to see that this page is responsive by the way.</p>
+<img src="images/imageforabout.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="auto"> 
+  
+  
 </div>
 
 <h2 style="text-align:center">Our Team</h2>
@@ -91,7 +91,8 @@ html {
         <p class="title">Web Developer</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>jordan@example.com</p>
-        <p><button class="button">Contact</button></p>
+        <p><button class="button"><a href="contactus.php" style="color:white" style= "text-decoration:none"
+		>Contact</a></button></p>
       </div>
     </div>
   </div>
@@ -104,7 +105,9 @@ html {
         <p class="title">Web Developer</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>demaris@example.com</p>
-        <p><button class="button">Contact</button></p>
+        <p><button class="button"><a href="contactus.php" style="color:white" style= "text-decoration:none"
+
+		>Contact</a></button></p>
       </div>
     </div>
   </div>
@@ -117,7 +120,8 @@ html {
         <p class="title">Web Developer</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>semhar@example.com</p>
-        <p><button class="button">Contact</button></p>
+        <p><button class="button"><a href="contactus.php" style="color:white" style= "text-decoration:none"
+		>Contact</a></button></p>
       </div>
     </div>
   </div>
