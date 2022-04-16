@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html>
+<?php
+
+$pageTitle = "Home";
+$pageContent = NULL;
+
+$pageContent .= <<<HERE
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -75,11 +79,6 @@ html {
 </head>
 <body>
 
-<div class="about-section">
-<img src="images/imageforabout.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="auto"> 
-  
-  
-</div>
 
 <h2 style="text-align:center">Our Team</h2>
 <div class="row">
@@ -125,7 +124,8 @@ html {
       </div>
     </div>
   </div>
+  
 </div>
-
-</body>
-</html>
+HERE;
+include 'template.php'
+?>

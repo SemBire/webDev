@@ -63,31 +63,4 @@ echo<<<HERE
     </nav>
     
 HERE;
-print $pageContent;
-echo<<<HERE
-            <hr>
-            <footer class="container-fluid">
-<br>
-<a href="login.php" >
-<button type="button" class="btn btn-dark"> Sign In </button>
-</a>
-
-
-
-<br>
-<hr>
-<p> Developed by Yordin Kirk, Semhar Bire, Damaris Gonzalez</p>
-<a href="https://www.youtube.com/" class="btn"><span class="fab fa-youtube-square" style="font-size:52px;color:red"></span></a>
-<a href="https://www.instagram.com/" class="btn"><span class="fab fa-instagram" style="font-size:52px;color:fuchsia"></span></a>
-<a href="https://www.pinterest.com/" class="btn"><span class="fab fa-pinterest-square" style="font-size:52px;color:firebrick"></span></a>
-<a href="https://www.twitter.com/" class="btn"><span class="fab fa-twitter-square" style="font-size:52px;color:DeepSkyBlue"></span></a>
-<br>
-<a href="register.php" > Subscribe in our WebSite </a>
-<p>© BHC Web Dev 2022</p>
-</footer>
-        </main>
-    </body>
-
-</html>
-HERE;
 ?>

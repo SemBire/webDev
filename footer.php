@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 echo<<<HERE
 <!DOCTYPE html>
 <html lang="en">
@@ -16,55 +17,6 @@ echo<<<HERE
 
     </head>
 <body>
-
-    <div class="fakeimg" style="margin-bottom:0" >
-        <img src="images/homepagephoto.png" class="fakeimg" alt="Cinque Terre" >
-    </div>
-
-    <nav class="navbar navbar-expand-sm navbar-dark sticky-top"  style="background-color:#FDAC53 ;">
-   
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div
-    class="collapse navbar-collapse"
-    id="navbarNav">
-    <ul class="navbar-nav">
-    <li class="nav-item active">
-    <a href="index.php" class="nav-link active">
-    Home
-    </a>
-    </li>
-    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"  data-bs-toggle="dropdown" aria-expanded="false"> Recipe Gallery </a>
-    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		<li><a href="#"
-		class="dropdown-item">Breakfast </a></li>
-		<li><a href="#"
-		class="dropdown-item">Lunch </a></li>
-		<li><a href="#"
-		class="dropdown-item">Dinner </a></li>
-    </ul>
-    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us </a>
-    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		<li><a href="about.php"
-		class="dropdown-item">Who we are?</a></li>
-		<li><a href="#"
-		class="dropdown-item">What we love?</a></li>
-		<li><a href="contactus.php"
-		class="dropdown-item">How to contact us?</a></li>
-    </ul>
-    </li>
-    </ul>
-    </div>
-    
-    </div>
-    </nav>
-    
-HERE;
-print $pageContent;
-echo<<<HERE
             <hr>
             <footer class="container-fluid">
 <br>
@@ -85,9 +37,7 @@ echo<<<HERE
 <a href="register.php" > Subscribe in our WebSite </a>
 <p>© BHC Web Dev 2022</p>
 </footer>
-        </main>
-    </body>
-
+</body>
 </html>
 HERE;
 ?>

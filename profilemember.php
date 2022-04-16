@@ -1,6 +1,10 @@
 <?php
 $TITLE= "Member Profile";
-include 'config.php';
+require_once 'config.php';
+auth_user(1);
+$year= date("Y");
+$class = $year + 3;
+
 
 if (!$conn){
 	echo "Failed to connect to database: " . mysqli_connect_error ();
@@ -37,6 +41,23 @@ $valid = TRUE;
 $update = FALSE;
 $pageContent = NULL;
 
+if(auth_admin(5)){
+if (filter_has_var(INPUT_POST,'memberID)) {
+   $memberID = filter_input(INPUT_POST,'memberID');
+} elseif (filter_has_var(INPUT_GET,'memberID')){
+	$memberID = filter_input(INPUT_GET, 'memberID'); 
+}
+} else {
+	$memberID = $_SESSION['memberID'];
+}
+
+if (filter_has_var(INPUT_POST,'editProfile') &&($_SESSION['loggedIn'] == TRUE)) {
+$editProfile = TRUE;
+}elseif (filter_has_var(INPUT_GET, 'editProfile') && ($_SESSION['loggedIn'] == TRUE)) {
+$editProfile = TRUE;
+} else {
+$editProfile = FALSE;
+}
 
 if (isset($_GET['message'])){
 	$message = "<p class='text-danger'> " . $_GET['message'] . "</p>";
@@ -190,20 +211,10 @@ $pageContent .= <<<HERE
 			<figcaption> Nickname:  $nickname </figcaption>
 		</figure>
 		<p><a href="profile.php?update&userID=$userID"> Update Profile </a></p>
-		
 		<p>Email:  $email </p>
 		<p>You are logged in. </p>
 		<p>This is your username for future login</p>
 		<p> Username: <strong> $username</strong></p>
-		
-		<form method="post" action="tableTest2.php">
-		<div class="form-group">
-			<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
-			<input type="submit" class="btn btn-success btn-lg" name="success" value="Table Edit Profile">
-			
-		</div>
-		
-	</form>
 	<section>\n
 HERE;
 
@@ -257,15 +268,12 @@ $pageContent .=<<<HERE
 		<div class="form-group">
 			<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
 			<input type="submit" class="btn btn-danger btn-lg" name="delete" value="Delete Profile">
-			
 		</div>
-		
 	</form>
 		
 	</section>\n
 HERE;
 }
-
 
 include_once 'template.php';
 ##echo "<pre>";

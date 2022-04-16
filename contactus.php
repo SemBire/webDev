@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html>
+<?php
+
+$pageTitle = "Home";
+$pageContent = NULL;
+
+$pageContent .= <<<HERE
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -43,7 +47,7 @@ input[type=submit]:hover {
 <h3>Contact Form</h3>
 
 <div class="container">
-  <form action="/action_page.php">
+  <form action="login.php">
     <label for="fname">First Name</label>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
@@ -60,11 +64,13 @@ input[type=submit]:hover {
     <label for="subject">Subject</label>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" >
+	<input type="reset" value="Cancel">
 	
   </form>
-  <button type="button" class="cancelbtn">Cancel</button>
+  
 </div>
+HERE;
+include 'template.php'
+?>
 
-</body>
-</html>

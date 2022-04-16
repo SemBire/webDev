@@ -185,16 +185,14 @@ if (!$update){
 $pageContent .= <<<HERE
 	<section class="container">
 		$message
-		<h1> Welcome, $firstname  $lastname </h1>
-		<figure><img src = "images/$image_name" alt= "Profile image" class="profile_image" style="style="float:left;width:120px;height:120px;">
-			<figcaption> Nickname:  $nickname </figcaption>
-		</figure>
-		<p><a href="profile.php?update&userID=$userID"> Update Profile </a></p>
+		<h1> Welcome, Admin </h1>
 		
-		<p>Email:  $email </p>
+			
+		
+	
 		<p>You are logged in. </p>
-		<p>This is your username for future login</p>
-		<p> Username: <strong> $username</strong></p>
+		<p>This is your Admin for future login</p>
+		<p> Adminname: <strong> $adminname</strong></p>
 		
 		<form method="post" action="tableTest2.php">
 		<div class="form-group">
