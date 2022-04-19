@@ -1,55 +1,77 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+</head>
+<body style="margin:50px;">
+  <h1>Dashboard Table</h1>
+  <br>
+  <table class="table">
+      <thead>
+          <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Nick Name</th>
+          <th>User Name</th>
+          <th>Email</th>
+         <th>Avatar</th>
+         <th>Action</th>
+        
+      </tr>
+        </thead>
+    
+        
+        <tbody>
+          <?php
 
-$dsn = 'mysql:host=localhost:3306;dbname=BuddyGuy';
-$username = 'BuddyGuy'
-$password = 'TwrUgx6a';
-$options = [];
-try {
-$connection = new PDO($dsn, $username, $password, $options);
-} catch(PDOException $e) {
+$servername = "localhost:3306";
+$username = "BuddyGuy";
+$password = "TwrUgx6a";
+$database = "BuddyGuy";
 
+$connection = new mysqli($servername,$username,$password, $database);
+
+if (!$connection->connect_error){
+	die("Connection failed: " . $connection->connect_error);
 }
 
+$sql = "SELECT * FROM user_table";
+$result = $connection->query($sql);
 
-$sql = 'SELECT * FROM user_table';
-$statement = $connection->prepare($sql);
-$statement->execute();
-$people = $statement->fetchAll(PDO::FETCH_OBJ);
- ?>
-<?php 
-$pageContent = NULL;
-$pageContent .= <<<HERE
-<div class="container">
-  <div class="card mt-5">
-    <div class="card-header">
-      <h2>All people</h2>
-    </div>
-    <div class="card-body">
-      <table class="table table-bordered">
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Action</th>
-        </tr>
-        <?php foreach($people as $person): ?>
-          <tr>
-            <td><?= $person->id; ?></td>
-            <td><?= $person->name; ?></td>
-            <td><?= $person->email; ?></td>
-            <td>
-              <a href="edit.php?id=<?= $person->id ?>" class="btn btn-info">Edit</a>
-              <a onclick="return confirm('Are you sure you want to delete this entry?')" href="delete.php?id=<?= $person->id ?>" class='btn btn-danger'>Delete</a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </table>
-    </div>
-  </div>
-</div>
- HERE;
+if (!$result) {
+  die("Invalid query:". $connection->error);
+}
+
+while($row = $result->fetch_assoc())
+{
+
+ echo "<tr>
+       <td>".$row["userID"]. "</td>
+       <td>".$row["firstname"]. "</td>
+       <td>".$row["lastname"]. "</td>
+	 <td>".$row["nickname"]. "</td>
+       <td>".$row["username"]. "</td>
+	 <td>".$row["email"]. "</td>
+	 <td>".$row["avatar"]. "</td>
+       <td>
+       <a  class='btn btn-primary btn-sm'  href='update'>Update</a>
+       <a class='btn btn-danger btn-sm' herf='delete'>Delete</a>
+       </td>
+
+      </tr>";
+}
+
+        
+      ?>
 
 
-include_once 'template.php';
- ?>
+        </tbody>
+  </table>
+</body>
+</html>

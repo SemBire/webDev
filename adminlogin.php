@@ -1,6 +1,6 @@
 <?php
 
-include_once('config.php');
+include_once('connection.php');
 
 function test_input($data) {
 	

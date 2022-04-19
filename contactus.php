@@ -47,7 +47,7 @@ input[type=submit]:hover {
 <h3>Contact Form</h3>
 
 <div class="container">
-  <form action="login.php">
+  <form action="thankyou.php">
     <label for="fname">First Name</label>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
@@ -64,7 +64,8 @@ input[type=submit]:hover {
     <label for="subject">Subject</label>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-    <input type="submit" value="Submit" >
+    
+	<input type="submit" value="Submit">
 	<input type="reset" value="Cancel">
 	
   </form>

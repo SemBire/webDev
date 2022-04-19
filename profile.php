@@ -2,6 +2,7 @@
 $TITLE= "Member Profile";
 include 'config.php';
 
+
 if (!$conn){
 	echo "Failed to connect to database: " . mysqli_connect_error ();
 }
@@ -185,7 +186,7 @@ if (!$update){
 $pageContent .= <<<HERE
 	<section class="container">
 		$message
-		<h1> Welcome, $firstname  $lastname </h1>
+		<h1> Welcome, Admin </h1>
 		<figure><img src = "images/$image_name" alt= "Profile image" class="profile_image" style="style="float:left;width:120px;height:120px;">
 			<figcaption> Nickname:  $nickname </figcaption>
 		</figure>
@@ -196,10 +197,10 @@ $pageContent .= <<<HERE
 		<p>This is your username for future login</p>
 		<p> Username: <strong> $username</strong></p>
 		
-		<form method="post" action="tableTest2.php">
+		<form method="post" action="tableTest4.php">
 		<div class="form-group">
 			<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
-			<input type="submit" class="btn btn-success btn-lg" name="success" value="Table Edit Profile">
+			<input type="submit" class="btn btn-success btn-lg" name="success" value="Admin Dashboard">
 			
 		</div>
 		
@@ -255,16 +256,20 @@ $pageContent .=<<<HERE
 	</form>
 	<form method="post" action="update.php">
 		<div class="form-group">
-			<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
-			<input type="submit" class="btn btn-danger btn-lg" name="delete" value="Delete Profile">
-			
+		<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
+		<input type="submit" class="btn btn-danger btn-lg" name="delete" value="Delete Profile">
 		</div>
-		
+	</form>
+	<form method="post" action="profile.php">
+		<div class="form-group">
+		<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
+		<input type="submit" class="btn btn-success btn-lg" name="profile" value="Cancel">
+		</div>
 	</form>
 		
 	</section>\n
 HERE;
-
+}
 
 
 include_once 'template.php';

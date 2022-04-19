@@ -71,7 +71,7 @@ include 'config.php';
                 <td>$email</td>
                 <td>$avatar</td>
                 <td>
-                        <a class='btn btn-primary btn-sm' href='updated.php?userID=$userID'>Update</a>
+                        <a class='btn btn-primary btn-sm' href='profile.php?update&userID=$userID'>Update</a>
                         <a class='btn btn-danger btn-sm' href='delete.php?userID=$userID'>Delete</a>
                     </td>
                 </tr>

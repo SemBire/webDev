@@ -1,18 +1,39 @@
+<?php
 
-<!DOCTYPE html>
-<html>
+include 'config.php';
+            $servername = "localhost:3306";
+            $username = "root";
+            $password = "";
+            $database = "easy_recipe";
+            $userID=NULL;
+			$pageContent=NULL;
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+			// Create connection
+			$conn= new mysqli($servername, $username, $password, $database);
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            // Check connection
+			if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+			}
 
-</head>
+            // read all row from database table
+	$sql = "SELECT * FROM user_table";
+	$result = $conn->query($sql);
 
-<body style="margin: 50px;">
+     if (!$result) {
+				die("Invalid query: " . $conn->error);
+		}while($row = $result->fetch_assoc()) {
+            $firstname = $row ['firstname'];
+			$lastname = $row ['lastname'];
+			$username= $row ['username'];
+			$nickname=$row ['nickname'];
+			$email = $row ['email'];
+			$image = $row ['avatar'];
+			}
+ $conn->close();			
+		
+$pageContent .= <<<HERE       
+<section>
     <h1>Dashboard</h1>
     <br>
     <table class="table">
@@ -30,54 +51,25 @@
 		</thead>
 
         <tbody>
-            <?php
-
-            $servername = "localhost:3306";
-            $username = "BuddyGuy";
-            $password = "TwrUgx6a";
-            $database = "BuddyGuy";
-            
-
-			// Create connection
-			$connection = new mysqli($servername, $username, $password, $database);
-
-            // Check connection
-			if ($connection->connect_error) {
-				die("Connection failed: " . $connection->connect_error);
-			}
-
-            // read all row from database table
-			$sql = "SELECT * FROM user_table";
-			$result = $connection->query($sql);
-
-            if (!$result) {
-				die("Invalid query: " . $connection->error);
-			}
-
-            // read data of each row
-
-			while($row = $result->fetch_assoc()) {
-                echo "<tr>
-                <td>".$row["userID"]. "</td>
-                <td>".$row["firstname"]. "</td>
-                <td>".$row["lastname"]. "</td>
-                <td>".$row["nickname"]. "</td>
-                <td>".$row["username"]. "</td>
-                <td>".$row["email"]. "</td>
-                <td>".$row["avatar"]. "</td>
+		<tr>
+                <td> $userID</td>
+                <td>$firstname</td>
+                <td>$lastname</td>
+                <td>$nickname</td>
+                <td>$username</td>
+                <td>$email</td>
+                <td>$avatar</td>
                 <td>
-                       <a class='btn btn-primary btn-sm' href='updated.php?userID=".$row["userID"]. "'>Update</a>
-                        <a class='btn btn-danger btn-sm' href='delete.php?userID=".$row["userID"]. "'>Delete</a>
+                        <a class='btn btn-primary btn-sm' href='updated.php?userID=$userID'>Update</a>
+                        <a class='btn btn-danger btn-sm' href='delete.php?userID=$userID'>Delete</a>
                     </td>
-                </tr>";
-            }
-
-            $connection->close();
-
-
-
-            ?>
+                </tr>
         </tbody>
     </table>
-</body>
-</html>
+</section>\n
+HERE;
+
+include_once 'template.php';
+
+	
+?>

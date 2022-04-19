@@ -1,3 +1,4 @@
+
 <?php
 
 $pageTitle = "Home";
@@ -33,7 +34,7 @@ html {
 }
 
 .about-section {
- 
+  padding: 50px;
   text-align: center;
   background-color: #FDAC53;
   color: white;
@@ -80,6 +81,7 @@ html {
 <body>
 
 
+
 <h2 style="text-align:center">Our Team</h2>
 <div class="row">
   <div class="column">
@@ -105,7 +107,6 @@ html {
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>demaris@example.com</p>
         <p><button class="button"><a href="contactus.php" style="color:white" style= "text-decoration:none"
-
 		>Contact</a></button></p>
       </div>
     </div>
@@ -124,8 +125,8 @@ html {
       </div>
     </div>
   </div>
-  
 </div>
+</body>
 HERE;
 include 'template.php'
 ?>
