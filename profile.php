@@ -264,7 +264,7 @@ $pageContent .=<<<HERE
 		
 	</section>\n
 HERE;
-}
+
 
 
 include_once 'template.php';

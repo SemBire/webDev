@@ -1,82 +1,83 @@
 
-<?php
-$connect = mysqli_connect("localhost:3306", "BuddyGuy", "TwrUgx6a", "BuddyGuy");
-$query = "SELECT * FROM user_table ORDER BY userID DESC";
-$result = mysqli_query($connect, $query);
+<!DOCTYPE html>
+<html>
 
-?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-<html>  
- <head>  
-          <title>Table Data Edit Delete</title>  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>            
-    <script src="jquery.tabledit.min.js"></script>
-    </head>  
-    <body>  
-  <div class="container">  
-  
-   
-            <div class="table-responsive">  
-    <h3 align="center"> Table Data Edit Delete </h3><br />  
-    <table id="editable_table" class="table table-bordered table-striped">
-     <thead>
-      <tr>
-       <th>ID</th>
-       <th>First Name</th>
-       <th>Last Name</th>
-	   <th>Nick Name</th>
-       <th>User Name</th>
-	   <th>Email</th>
-	   <th>Password</th>
-	   <th>Avatar</th>
-     
-	 </tr>
-     </thead>
-     <tbody>
-     <?php
-     while($row = mysqli_fetch_array($result))
-     {
-      echo '
-      <tr>
-       <td>'.$row["userID"].'</td>
-       <td>'.$row["firstname"].'</td>
-       <td>'.$row["lastname"].'</td>
-	   <td>'.$row["nickname"].'</td>
-       <td>'.$row["username"].'</td>
-	   <td>'.$row["email"].'</td>
-       <td>'.$row["password"].'</td>
-	   <td>'.$row["avatar"].'</td>
-      </tr>
-      ';
-     }
-     ?>
-     </tbody>
+</head>
+
+<body style="margin: 50px;">
+    <h1>Dashboard</h1>
+    <br>
+    <table class="table">
+        <thead>
+		<tr>
+         <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Nick Name</th>
+          <th>User Name</th>
+          <th>Email</th>
+         <th>Avatar</th>
+         <th>Action</th>
+			</tr>
+		</thead>
+
+        <tbody>
+            <?php
+
+            $servername = "localhost:3306";
+            $username = "BuddyGuy";
+            $password = "TwrUgx6a";
+            $database = "BuddyGuy";
+            
+
+			// Create connection
+			$connection = new mysqli($servername, $username, $password, $database);
+
+            // Check connection
+			if ($connection->connect_error) {
+				die("Connection failed: " . $connection->connect_error);
+			}
+
+            // read all row from database table
+			$sql = "SELECT * FROM user_table";
+			$result = $connection->query($sql);
+
+            if (!$result) {
+				die("Invalid query: " . $connection->error);
+			}
+
+            // read data of each row
+
+			while($row = $result->fetch_assoc()) {
+                echo "<tr>
+                <td>".$row["userID"]. "</td>
+                <td>".$row["firstname"]. "</td>
+                <td>".$row["lastname"]. "</td>
+                <td>".$row["nickname"]. "</td>
+                <td>".$row["username"]. "</td>
+                <td>".$row["email"]. "</td>
+                <td>".$row["avatar"]. "</td>
+                <td>
+                       <a class='btn btn-primary btn-sm' href='updated.php?userID=".$row["userID"]. "'>Update</a>
+                        <a class='btn btn-danger btn-sm' href='delete.php?userID=".$row["userID"]. "'>Delete</a>
+                    </td>
+                </tr>";
+            }
+
+            $connection->close();
+
+
+
+            ?>
+        </tbody>
     </table>
-   </div>  
-  </div>  
- </body>  
-</html>  
-<script>  
-$(document).ready(function(){  
-     $('#editable_table').Tabledit({
-      url:'action.php',
-      columns:{
-       identifier:[0, "userID"],
-       editable:[[1, 'firstname'], [2, 'lastname'],  [3, 'nickname'],  [4, 'username'],  [5, 'email'],  [6, 'password'],  [7, 'avatar']]
-      },
-      restoreButton:false,
-      onSuccess:function(data, textStatus, jqXHR)
-      {
-       if(data.action == 'delete')
-       {
-        $('#'+data.userID).remove();
-       }
-      }
-     });
- 
-});  
- </script>
-
+</body>
+</html>

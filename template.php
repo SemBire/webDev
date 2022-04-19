@@ -50,8 +50,6 @@ echo<<<HERE
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 		<li><a href="about.php"
 		class="dropdown-item">Who we are?</a></li>
-		<li><a href="#"
-		class="dropdown-item">What we love?</a></li>
 		<li><a href="contactus.php"
 		class="dropdown-item">How to contact us?</a></li>
     </ul>
@@ -69,12 +67,12 @@ echo<<<HERE
             <footer class="container-fluid">
 <br>
 <a href="login.php" >
-<button type="button" class="btn btn-dark"> Sign In </button>
+<button type="button" class="btn btn-primary"> Sign In </button>
 </a>
 
 
 
-<br>
+
 <hr>
 <p> Developed by Yordin Kirk, Semhar Bire, Damaris Gonzalez</p>
 <a href="https://www.youtube.com/" class="btn"><span class="fab fa-youtube-square" style="font-size:52px;color:red"></span></a>
