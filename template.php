@@ -25,7 +25,7 @@
 
 	<nav class="navbar navbar-expand-sm navbar-dark sticky-top">
 		<div class="container-fluid">
-			<img  class="navbar-brand" src="images/logo.png" id="logo" alt="Page Logo" width="50" height="50">
+			<img  class="navbar-brand" src="images/logo.png" id="logo" alt="Page Logo" width="50" height="50">
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-controls="myNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -45,10 +45,10 @@
 						<a class="nav-link" href="recipes.php">Gallery</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled">About Us</a>
+						<a class="nav-link" href="about.php">About Us</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled">Contact us</a>
+						<a class="nav-link" href="contactus.php">Contact us</a>
 					</li>
 				</ul>
 				<form class="d-flex">
